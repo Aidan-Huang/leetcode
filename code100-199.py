@@ -25,5 +25,27 @@ def test122():
 
         return profit
 
-    prices = [7,1,5,3,6,4]
-    assert maxProfit(prices) == 7
+    def maxProfit0(prices: List[int]) -> int:
+        if not prices:
+            return 0
+
+        n = len(prices)
+        profit = 0
+
+        for index in range(1, n):
+            if prices[index] > prices[index - 1]:
+                profit += prices[index] - prices[index - 1]
+
+        return profit
+
+    prices = [7, 1, 5, 3, 6, 4]
+    assert maxProfit0(prices) == 7
+
+    prices = [1, 2, 3, 4, 5]
+    assert maxProfit0(prices) == 4
+
+    prices = [0]
+    assert maxProfit0(prices) == 0
+
+    prices = [1]
+    assert maxProfit0(prices) == 0
