@@ -30,7 +30,32 @@ def test0001():
 #   两数相加
 def test0002():
     def add_two_numbers(l1, l2):
-        pass
+        short = l1
+        long = l2
+
+        if len(l1) > len(l2):
+            short = l2
+            long = l1
+
+        up = 0
+
+        result = []
+
+        for i in range(len(short)):
+            single_sum = short[i] + long[i] + up
+            result.append(single_sum % 10)
+            up = int(single_sum / 10)
+
+        for j in range(len(short), len(long)):
+            single_sum = long[j] + up
+            result.append(single_sum % 10)
+            up = int(single_sum / 10)
+
+        if up > 0:
+            result.append(up)
+
+        return result
+
 
     l1 = [2, 4, 3]
     l2 = [5, 6, 4]
@@ -44,3 +69,19 @@ def test0002():
     l1 = [9, 9, 9, 9, 9, 9, 9]
     l2 = [9, 9, 9, 9]
     assert add_two_numbers(l1, l2) == [8, 9, 9, 9, 0, 0, 0, 1]
+
+
+# 无重复字符的最长子串
+# 给定一个字符串s ，请你找出其中不含有重复字符的最长子串的长度。
+def test0003():
+    def length_of_longest_substring(s):
+        pass
+
+    s = "abcabcbb"
+    assert length_of_longest_substring(s) == 3  # "abc"
+
+    s = "bbbbb"
+    assert length_of_longest_substring(s) == 1
+
+    s = "pwwkew"
+    assert length_of_longest_substring(s) == 3
