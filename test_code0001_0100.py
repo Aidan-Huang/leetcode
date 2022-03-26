@@ -90,10 +90,53 @@ def test0002():
 # 给定一个字符串s ，请你找出其中不含有重复字符的最长子串的长度。
 def test0003():
     def length_of_longest_substring(s):
-        return eric220326(s)
+        return aidan220326(s)
+        # return eric220326(s)
 
-    def eric220326(s):
-        pass
+    def aidan220326(s):
+        n = len(s)
+        if n <= 1:
+            return n
+        repeat = []
+        n_max = 1
+        for i in range(n):
+            repeat.clear()
+            repeat.append(s[i])
+            for j in range(i + 1, n):
+                if s[j] not in repeat:
+                    repeat.append(s[j])
+                else:
+                    break
+
+            if len(repeat) > n_max:
+                n_max = len(repeat)
+
+        return n_max
+
+    def eric220326(s): # todo fix the last testcase
+        if len(s) <= 1:
+            return len(s)
+        i = 0
+        a = 0
+        r = []
+        t = 0
+        while i <= len(s) - 1:
+            j = True
+            for char in r:
+                if char == s[i]:
+                    j = False
+                    break
+            if j:
+                r.append(s[i])
+                a += 1
+                i += 1
+            else:
+                if a > t:
+                    t = a
+                r = []
+                a = 0
+
+        return t
 
     s = "abcabcbb"
     assert length_of_longest_substring(s) == 3  # "abc"
@@ -103,3 +146,12 @@ def test0003():
 
     s = "pwwkew"
     assert length_of_longest_substring(s) == 3
+
+    s = ""
+    assert length_of_longest_substring(s) == 0
+
+    s = " "
+    assert length_of_longest_substring(s) == 1
+
+    s = "au"
+    assert length_of_longest_substring(s) == 2
