@@ -71,7 +71,6 @@ def test0002():
 
         return result
 
-
     l1 = [2, 4, 3]
     l2 = [5, 6, 4]
     assert add_two_numbers(l1, l2) == [7, 0, 8]
@@ -90,8 +89,9 @@ def test0002():
 # 给定一个字符串s ，请你找出其中不含有重复字符的最长子串的长度。
 def test0003():
     def length_of_longest_substring(s):
-        return aidan220326(s)
-        # return eric220326(s)
+        return eric220328(s)
+        # return aidan220326(s)
+
 
     def aidan220326(s):
         n = len(s)
@@ -113,29 +113,28 @@ def test0003():
 
         return n_max
 
-    def eric220326(s): # todo fix the last testcase
-        if len(s) <= 1:
-            return len(s)
-        i = 0
-        a = 0
-        r = []
+    def eric220328(s):
         t = 0
-        while i <= len(s) - 1:
-            j = True
-            for char in r:
-                if char == s[i]:
-                    j = False
+        if len(s) == 1:
+            return 1
+        for i in range(0, len(s)-1):
+            s_list = []
+            a = 0
+            for num in range(i, len(s)):
+                is_same = False
+                for n in s_list:
+                    if s[num] == n:
+                        is_same = True
+                        if a > t:
+                            t = a
+                        break
+                if not is_same:
+                    s_list.append(s[num])
+                    a += 1
+                else:
                     break
-            if j:
-                r.append(s[i])
-                a += 1
-                i += 1
-            else:
-                if a > t:
-                    t = a
-                r = []
-                a = 0
-
+            if a > t:
+                t = a
         return t
 
     s = "abcabcbb"
@@ -155,3 +154,6 @@ def test0003():
 
     s = "au"
     assert length_of_longest_substring(s) == 2
+
+    s = "dvdf"
+    assert length_of_longest_substring(s) == 3
