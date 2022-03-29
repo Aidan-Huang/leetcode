@@ -99,7 +99,7 @@ def test0003():
             return n
         repeat = []
         n_max = 1
-        for i in range(n):
+        for i in range(n - n_max):
             repeat.clear()
             repeat.append(s[i])
             for j in range(i + 1, n):
@@ -157,3 +157,44 @@ def test0003():
 
     s = "dvdf"
     assert length_of_longest_substring(s) == 3
+
+    s = "dvdf"
+    assert length_of_longest_substring(s) == 3
+
+
+# 最长回文子串
+def test0005():
+    def longest_palindrome(s):
+        return aidan220328(s)
+
+    def aidan220328(s):
+        pass
+
+    def eric220329(s):
+        pass
+
+    s = "babad"
+    assert longest_palindrome(s) == "bab" or longest_palindrome(s) == "aba"
+
+    s = "cbbd"
+    assert longest_palindrome(s) == "bb"
+
+
+# 回文数
+# 给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。
+# 回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
+# 例如，121 是回文，而 123 不是。
+def test0009():
+    def is_palindrome(x):
+        return eric220329(x)
+
+    def eric220329(x):
+        pass
+
+    x = 121
+    assert is_palindrome(x) is True
+    x = -121
+    assert is_palindrome(x) is False
+    x = 10
+    assert is_palindrome(x) is False
+
