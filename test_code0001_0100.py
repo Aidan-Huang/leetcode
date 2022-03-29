@@ -189,7 +189,16 @@ def test0009():
         return eric220329(x)
 
     def eric220329(x):
-        pass
+        l = []
+        if x < 0:
+            return False
+        for char in str(x):
+            l.append(char)
+        for n in range(0,len(l)):
+            if l[-n-1] != l[n]:
+                return False
+        return True
+
 
     x = 121
     assert is_palindrome(x) is True
