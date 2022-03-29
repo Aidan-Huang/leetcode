@@ -186,7 +186,8 @@ def test0005():
 # 例如，121 是回文，而 123 不是。
 def test0009():
     def is_palindrome(x):
-        return eric220329(x)
+        return aidan220329(x)
+        # return eric220329(x)
 
     def eric220329(x):
         l = []
@@ -198,6 +199,10 @@ def test0009():
             if l[-n-1] != l[n]:
                 return False
         return True
+
+    def aidan220329(x):
+        l1 = list(str(x))
+        return l1 == list(reversed(l1))
 
 
     x = 121
