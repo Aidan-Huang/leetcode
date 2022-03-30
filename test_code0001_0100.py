@@ -92,7 +92,6 @@ def test0003():
         return eric220328(s)
         # return aidan220326(s)
 
-
     def aidan220326(s):
         n = len(s)
         if n <= 1:
@@ -117,7 +116,7 @@ def test0003():
         t = 0
         if len(s) == 1:
             return 1
-        for i in range(0, len(s)-1):
+        for i in range(0, len(s) - 1):
             s_list = []
             a = 0
             for num in range(i, len(s)):
@@ -165,20 +164,31 @@ def test0003():
 # 最长回文子串
 def test0005():
     def longest_palindrome(s):
-        return aidan220328(s)
+        return eric220330(s)
 
     def aidan220328(s):
         pass
 
-    def eric220329(s):
-        pass
+    def eric220330(s):
+        tstring = ""
+        n = len(s)
+        for i in range(n):
+            nstring = ""
+            for j in range(i, n):
+                nstring += s[j]
+                if s[i] == s[j]:
+                    if nstring == nstring[::-1]:
+                        if len(nstring) > len(tstring):
+                            tstring = nstring
+        return tstring
 
     s = "babad"
     assert longest_palindrome(s) == "bab" or longest_palindrome(s) == "aba"
 
     s = "cbbd"
     assert longest_palindrome(s) == "bb"
-
+    s = "thelviymgkeddreyviespjsyqwmbmnlwzjhdokfzrczvreiagayofwvhecskjqlqzodtozvzozqyiwfsjyrinrmgfyhplybonzuvmxxyihmggwiuccplqjtgschmieoexvtewbsjqzkzapfxpzhgjtbmlchevohmxnbattphvobptnhmcoihcaimchurqpucxapojgszpopdvsfahwidiyxlpjfhdkcoewzvlmaebudtovnvcuadykhhmwfpilqfdvnseiitokcbuxmhwukrdxwvtgztczrwcsydqwosnktronibiplbljrcpinqorbhxrwjonnqeniebrksjkcmbvjnuwdedoenqmrcxayqbzmlpbubnfnkkqnuljtchaeijcmfpyuxkgfssoqliqmhowtbmcvzkqbanxhowjjejexxlihwwhilxxejejjwohxnabqkzvcmbtwohmqilqossfgkxuypfmcjieahctjlunqkknfnbubplmzbqyaxcrmqneodedwunjvbmckjskrbeineqnnojwrxhbroqnipcrjlblpibinortknsowqdyscwrzctzgtvwxdrkuwhmxubckotiiesnvdfqlipfwmhhkydaucvnvotdubeamlvzweockdhfjplxyidiwhafsvdpopzsgjopaxcupqruhcmiachiocmhntpbovhpttabnxmhovehclmbtjghzpxfpazkzqjsbwetvxeoeimhcsgtjqlpccuiwggmhiyxxmvuznobylphyfgmrniryjsfwiyqzozvzotdozqlqjkscehvwfoyagaiervzcrzfkodhjzwlnmbmwqysjpseivyerddekgmyivleht"
+    print(longest_palindrome(s))
 
 # 回文数
 # 给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。
@@ -194,11 +204,10 @@ def test0009():
             return False
         for char in str(x):
             l.append(char)
-        for n in range(0,len(l)):
-            if l[-n-1] != l[n]:
+        for n in range(0, len(l)):
+            if l[-n - 1] != l[n]:
                 return False
         return True
-
 
     x = 121
     assert is_palindrome(x) is True
@@ -206,4 +215,3 @@ def test0009():
     assert is_palindrome(x) is False
     x = 10
     assert is_palindrome(x) is False
-
