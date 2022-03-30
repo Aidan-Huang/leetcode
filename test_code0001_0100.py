@@ -164,10 +164,23 @@ def test0003():
 # 最长回文子串
 def test0005():
     def longest_palindrome(s):
-        return eric220330(s)
+        # return eric220330(s)
+        return aidan220329(s)
 
-    def aidan220328(s):
-        pass
+    def aidan220329(s):
+        n = len(s)
+        n_max = 0
+        sub_max = ""
+        for i in range(n):
+            for j in range(i, n):
+                if s[i] == s[j]:
+                    sub_s = s[i:j + 1]
+                    if sub_s == sub_s[::-1]:
+                        if len(sub_s) > n_max:
+                            n_max = len(sub_s)
+                            sub_max = sub_s
+
+        return sub_max
 
     def eric220330(s):
         tstring = ""
@@ -187,8 +200,6 @@ def test0005():
 
     s = "cbbd"
     assert longest_palindrome(s) == "bb"
-    s = "thelviymgkeddreyviespjsyqwmbmnlwzjhdokfzrczvreiagayofwvhecskjqlqzodtozvzozqyiwfsjyrinrmgfyhplybonzuvmxxyihmggwiuccplqjtgschmieoexvtewbsjqzkzapfxpzhgjtbmlchevohmxnbattphvobptnhmcoihcaimchurqpucxapojgszpopdvsfahwidiyxlpjfhdkcoewzvlmaebudtovnvcuadykhhmwfpilqfdvnseiitokcbuxmhwukrdxwvtgztczrwcsydqwosnktronibiplbljrcpinqorbhxrwjonnqeniebrksjkcmbvjnuwdedoenqmrcxayqbzmlpbubnfnkkqnuljtchaeijcmfpyuxkgfssoqliqmhowtbmcvzkqbanxhowjjejexxlihwwhilxxejejjwohxnabqkzvcmbtwohmqilqossfgkxuypfmcjieahctjlunqkknfnbubplmzbqyaxcrmqneodedwunjvbmckjskrbeineqnnojwrxhbroqnipcrjlblpibinortknsowqdyscwrzctzgtvwxdrkuwhmxubckotiiesnvdfqlipfwmhhkydaucvnvotdubeamlvzweockdhfjplxyidiwhafsvdpopzsgjopaxcupqruhcmiachiocmhntpbovhpttabnxmhovehclmbtjghzpxfpazkzqjsbwetvxeoeimhcsgtjqlpccuiwggmhiyxxmvuznobylphyfgmrniryjsfwiyqzozvzotdozqlqjkscehvwfoyagaiervzcrzfkodhjzwlnmbmwqysjpseivyerddekgmyivleht"
-    print(longest_palindrome(s))
 
 # 回文数
 # 给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。
