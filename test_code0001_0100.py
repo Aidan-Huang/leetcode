@@ -237,10 +237,49 @@ def test0009():
 # 说明：你不能倾斜容器。
 def test0011():
     def max_area(height):
-        return eric220331()
+        return aidan220405(height)
+        # return aidan220330(height)
 
-    def eric220331(height):
-        pass
+    def aidan220405(height):
+        n = len(height)
+
+        left = 0
+        right = n - 1
+        r_max = 0
+
+        while left != right:
+            lower = height[left] if height[left] < height[right] else height[right]
+            area = lower * (right - left)
+            if area > r_max:
+                r_max = area
+
+            if lower == height[left]:
+                left += 1
+                while height[left] <= lower and left != right:
+                    left += 1
+            else:
+                right -= 1
+                while height[right] <= lower and left != right:
+                    right -= 1
+
+        return r_max
+
+
+
+
+    def aidan220330(height):
+        n = len(height)
+        r_max = 0
+
+        for i in range(n - 1):
+            for j in range(i + 1, n):
+                n_lower = height[i] if height[i] < height[j] else height[j]
+                tmp_area = n_lower * (j - i)
+                if tmp_area > r_max:
+                    r_max = tmp_area
+
+        return r_max
+
 
     height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
     assert max_area(height) == 49
@@ -248,3 +287,5 @@ def test0011():
     height = [1, 1]
     assert max_area(height) == 1
 
+    height = [1, 1, 1, 1, 1, 1, 1, 30, 20, 10]
+    assert max_area(height) == 20
