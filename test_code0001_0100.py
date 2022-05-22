@@ -253,7 +253,35 @@ def test0011():
             area = lower * (right - left)
             if area > r_max:
                 r_max = area
+        return eric_2(height)
 
+    def eric220331(height):
+        a = 0
+        for i in range(len(height)):
+            b = 0
+            for j in range(i, len(height)):
+                if height[i] > height[j]:
+                    n = height[j] * (j - i)
+                else:
+                    n = height[i] * (j - i)
+                if n > a:
+                    a = n
+        return a
+
+    def eric_2(height):
+        l = len(height)-1
+        f = 0
+        maxarea = 0
+        for i in range(l):
+            if height[f]>height[l]:
+                now_max = height[l]*(l-f)
+                l -= 1
+            else:
+                now_max = height[f] * (l-f)
+                f += 1
+            if now_max>maxarea:
+                maxarea = now_max
+        return maxarea
             if lower == height[left]:
                 left += 1
                 while height[left] <= lower and left != right:
