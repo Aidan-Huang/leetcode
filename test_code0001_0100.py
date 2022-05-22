@@ -354,10 +354,27 @@ def test0014():
         return aidan220522(strs)
 
     def aidan220522(strs):
-        pass
+
+        if not strs or len(strs) == 0:
+            return ""
+        if len(strs) == 1:
+            return strs[0]
+
+        result = ""
+        for i in range(len(strs[0])):
+            letter = strs[0][i]
+            for str in strs[1:]:
+                if i == len(str) or str[i] != letter:
+                    return result
+            result += letter
+
+        return result
 
     strs = ["flower", "flow", "flight"]
     assert longest_common_prefix(strs) == "fl"
 
     strs = ["dog", "racecar", "car"]
     assert longest_common_prefix(strs) == ""
+
+    strs = ["ab", "a"]
+    assert longest_common_prefix(strs) == "a"
