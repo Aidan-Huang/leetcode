@@ -394,3 +394,5 @@ def test0014():
 
     strs = ["ab", "a"]
     assert longest_common_prefix(strs) == "a"
+
+#     add eric github account
