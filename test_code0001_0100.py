@@ -351,7 +351,8 @@ def test0011():
 # 如果不存在公共前缀，返回空字符串 ""。
 def test0014():
     def longest_common_prefix(strs):
-        return aidan220522(strs)
+        return eric220522(strs)
+        # return aidan220522(strs)
 
     def aidan220522(strs):
 
@@ -369,6 +370,21 @@ def test0014():
             result += letter
 
         return result
+
+    def eric220522(strs):
+        prefix = ""
+        index = 0
+        while True:
+            for char in strs:
+                if len(char) == index:
+                    return prefix
+            now_number = strs[0][index]
+            for char in strs:
+                if now_number != char[index]:
+                    return (prefix)
+            prefix += now_number
+            index += 1
+
 
     strs = ["flower", "flow", "flight"]
     assert longest_common_prefix(strs) == "fl"
