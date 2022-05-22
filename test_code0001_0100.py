@@ -282,16 +282,6 @@ def test0011():
             if now_max>maxarea:
                 maxarea = now_max
         return maxarea
-            if lower == height[left]:
-                left += 1
-                while height[left] <= lower and left != right:
-                    left += 1
-            else:
-                right -= 1
-                while height[right] <= lower and left != right:
-                    right -= 1
-
-        return r_max
 
     def aidan220330(height):
         n = len(height)
