@@ -201,6 +201,7 @@ def test0005():
     s = "cbbd"
     assert longest_palindrome(s) == "bb"
 
+
 # 回文数
 # 给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。
 # 回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
@@ -264,9 +265,6 @@ def test0011():
 
         return r_max
 
-
-
-
     def aidan220330(height):
         n = len(height)
         r_max = 0
@@ -280,7 +278,6 @@ def test0011():
 
         return r_max
 
-
     height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
     assert max_area(height) == 49
 
@@ -289,3 +286,20 @@ def test0011():
 
     height = [1, 1, 1, 1, 1, 1, 1, 30, 20, 10]
     assert max_area(height) == 20
+
+
+# 最长公共前缀
+# 编写一个函数来查找字符串数组中的最长公共前缀。
+# 如果不存在公共前缀，返回空字符串 ""。
+def test0014():
+    def longest_common_prefix(strs):
+        return aidan220522(strs)
+
+    def aidan220522(strs):
+        pass
+
+    strs = ["flower", "flow", "flight"]
+    assert longest_common_prefix(strs) == "fl"
+
+    strs = ["dog", "racecar", "car"]
+    assert longest_common_prefix(strs) == ""
