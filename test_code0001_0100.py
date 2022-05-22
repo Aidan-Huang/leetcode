@@ -238,8 +238,10 @@ def test0009():
 # 说明：你不能倾斜容器。
 def test0011():
     def max_area(height):
-        return aidan220405(height)
+        # return aidan220405(height)
         # return aidan220330(height)
+        # return eric220331(height)
+        return eric_2(height)
 
     def aidan220405(height):
         n = len(height)
@@ -253,7 +255,17 @@ def test0011():
             area = lower * (right - left)
             if area > r_max:
                 r_max = area
-        return eric_2(height)
+
+            if lower == height[left]:
+                left += 1
+                while height[left] <= lower and left != right:
+                    left += 1
+            else:
+                right -= 1
+                while height[right] <= lower and left != right:
+                    right -= 1
+
+        return r_max
 
     def eric220331(height):
         a = 0
@@ -269,17 +281,45 @@ def test0011():
         return a
 
     def eric_2(height):
-        l = len(height)-1
+        l = len(height) - 1
         f = 0
         maxarea = 0
         for i in range(l):
-            if height[f]>height[l]:
-                now_max = height[l]*(l-f)
+            if height[f] > height[l]:
+                now_max = height[l] * (l - f)
                 l -= 1
             else:
-                now_max = height[f] * (l-f)
+                now_max = height[f] * (l - f)
                 f += 1
-            if now_max>maxarea:
+            if now_max > maxarea:
+                maxarea = now_max
+        return maxarea
+
+    def eric220331(height):
+        a = 0
+        for i in range(len(height)):
+            b = 0
+            for j in range(i, len(height)):
+                if height[i] > height[j]:
+                    n = height[j] * (j - i)
+                else:
+                    n = height[i] * (j - i)
+                if n > a:
+                    a = n
+        return a
+
+    def eric_2(height):
+        l = len(height) - 1
+        f = 0
+        maxarea = 0
+        for i in range(l):
+            if height[f] > height[l]:
+                now_max = height[l] * (l - f)
+                l -= 1
+            else:
+                now_max = height[f] * (l - f)
+                f += 1
+            if now_max > maxarea:
                 maxarea = now_max
         return maxarea
 
